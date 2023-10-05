@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Example {
+  id: ID!
+  createdAtUtc: DateTime!
+  updatedAtUtc: DateTime
+  deleteDateUtc: DateTime
+  version: Int!
+  name: String!
+  value: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Rate {
+  id: Int!
+  country: String!
+  currency: String!
+  amount: Int!
+  code: String!
+  rate: Float!
+}
+
+type RateWithTime {
+  rates: [Rate!]!
+  time: String!
+}
+
+type Query {
+  exchangeRates: RateWithTime!
+  exampleByName(name: String!): Example
+}
+
+type Mutation {
+  createExample(data: CreateExampleInputType!): Example!
+}
+
+input CreateExampleInputType {
+  name: String!
+  value: String!
+}
